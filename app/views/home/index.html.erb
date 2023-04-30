@@ -1,5 +1,9 @@
 <section id="warehouses" class="w-full">
-  <h2 class="text-3xl">Galpões</h2>
+  <div class="flex justify-between">
+    <h2 class="text-3xl">Galpões</h2>
+    <h2 class="text-mg"><%= link_to 'Cadastrar Galpão', new_warehouse_path %></h2>
+  </div>
+
   <hr class="h-px my-8 bg-gray-500 border-0">
   <div class="flex flex-row flex-wrap">
     <% @warehouses.each do |w| %>
