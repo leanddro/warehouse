@@ -1,0 +1,26 @@
+<div class="flex flex-col w-full  bg-white border border-gray-200 rounded-lg shadow">
+  <div class="flex flex-col p-6">
+    <h2 class="text-3xl font-bold">Galpão <%= @warehouse.code %></h2>
+    <hr class="h-px my-8 bg-gray-500 border-0">
+    <p class="mb-3 font-normal text-gray-700">
+      Nome: <%= @warehouse.name %>
+    </p>
+    <p class="mb-3 font-normal text-gray-700">
+      Cidade: <%= @warehouse.city %>
+    </p>
+    <p class="mb-3 font-normal text-gray-700">
+      Área: <%= @warehouse.area %> m²
+    </p>
+    <p class="mb-3 font-normal text-gray-700">
+      Endereço: <%= @warehouse.address %> CEP: <%= @warehouse.cep %>
+    </p>
+    <p class="mb-3 font-normal text-gray-800 text-lg">
+      <%= @warehouse.description %>
+    </p>
+  </div>
+  <div class="flex justify-end p-6">
+    <div>
+      <%= link_to 'Voltar', root_path %>
+    </div>
+  </div>
+</div>
