@@ -1,0 +1,27 @@
+<section id="warehouses" class="w-full">
+  <h2 class="text-3xl">Galpões</h2>
+  <hr>
+  <div class="flex flex-row flex-wrap">
+    <% @warehouses.each do |w| %>
+      <div class="w-4/12 bg-white border border-gray-200 rounded-lg shadow">
+        <div class="p-5">
+            <h3 class="mb-2 text-xl font-bold"><%= w.name %></h3>
+            <p class="mb-3 font-normal text-gray-700">
+              Código: <%= w.code %>
+            </p>
+            <p class="mb-3 font-normal text-gray-700">
+              Cidade: <%= w.city %>
+            </p>
+            <p class="mb-3 font-normal text-gray-700">
+              Área: <%= w.area %> m²
+            </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <% if @warehouses.empty? %>
+    <p class="mb-3 font-normal text-gray-700">
+      Não existem galpões cadastrados
+    </p>
+  <% end %>
+</section>
