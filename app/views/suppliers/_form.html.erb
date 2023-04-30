@@ -1,0 +1,43 @@
+<% if @supplier.errors.any? %>
+  <ul class="w-full">
+   <% @supplier.errors.full_messages.each do |msg| %>
+      <li class="p-2 w-full rounded-md text-red-700 bg-red-300 border border-red-400 m-1">
+        <%= msg %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @supplier, class: 'w-full mt-4 grid gap-4 grid-cols-5' do |f|%>
+  <div class="col-span-3">
+    <%= f.label :corporate_name %>
+    <%= f.text_field :corporate_name, class: 'h-10 border mt-1 rounded px-4 w-full bg-gray-50' %>
+  </div>
+  <div class="col-span-2">
+    <%= f.label :brand_name %>
+    <%= f.text_field :brand_name, class: 'h-10 border mt-1 rounded px-4 w-full bg-gray-50' %>
+  </div>
+  <div class="col-span-5">
+    <%= f.label :registration_number %>
+    <%= f.text_field :registration_number, class: 'h-10 border mt-1 rounded px-4 w-full bg-gray-50' %>
+  </div>
+  <div class="col-span-5">
+    <%= f.label :full_address %>
+    <%= f.text_field :full_address, class: 'h-10 border mt-1 rounded px-4 w-full bg-gray-50' %>
+  </div>
+  <div class="col-span-3">
+    <%= f.label :city %>
+    <%= f.text_field :city, class: 'h-10 border mt-1 rounded px-4 w-full bg-gray-50' %>
+  </div>
+  <div class="col-span-2">
+    <%= f.label :state %>
+    <%= f.text_field :state, class: 'h-10 border mt-1 rounded px-4 w-full bg-gray-50' %>
+  </div>
+  <div class="col-span-5">
+    <%= f.label :email %>
+    <%= f.number_field :email, class: 'h-10 border mt-1 rounded px-4 w-full bg-gray-50' %>
+  </div>
+  <div class="col-span-5 justify-end">
+    <%= f.submit 'Enviar', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer'%>
+  </div>
+<% end %>
