@@ -1,10 +1,12 @@
 class WarehousesController < ApplicationController
-  def show
-    @warehouse = Warehouse.find(params[:id])
-  end
+  before_action :set_warehouse, only: %i(show edit update)
+
+  def show; end
+
   def new
     @warehouse = Warehouse.new
   end
+
   def create
     @warehouse = Warehouse.new(warehouse_params)
     return redirect_to root_path, notice: 'Galpão cadastrado com sucesso.' if @warehouse.save
@@ -13,7 +15,20 @@ class WarehousesController < ApplicationController
     render 'new'
   end
 
+  def edit; end
+
+  def update
+    return redirect_to @warehouse, notice: 'Galpão atualizado com sucesso' if @warehouse.update(warehouse_params)
+
+    flash.now[:alert] = 'Não foi possível atualizar o galpão'
+    render 'edit'
+  end
+
   private
+
+  def set_warehouse
+    @warehouse = Warehouse.find(params[:id])
+  end
 
   def warehouse_params
     params.require(:warehouse)
