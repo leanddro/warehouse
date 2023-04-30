@@ -1,0 +1,24 @@
+<section class="w-full">
+  <div class="flex justify-between">
+    <h2 class="text-3xl">Fornecedores</h2>
+  </div>
+
+  <hr class="h-px my-8 bg-gray-500 border-0">
+  <div class="flex flex-row flex-wrap">
+    <% @suppliers.each do |supplier| %>
+      <div class="w-4/12 bg-white border border-gray-200 rounded-lg shadow">
+        <div class="p-5">
+            <h3 class="mb-2 text-xl font-bold"><%= link_to supplier.brand_name, root_path %></h3>
+            <p class="mb-3 font-normal text-gray-700">
+              <%= "#{supplier.city} - #{supplier.state}" %>
+            </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <% if @suppliers.empty? %>
+    <p class="mb-3 font-normal text-gray-700">
+      Não existem fornecedores cadastrados.
+    </p>
+  <% end %>
+</section>
