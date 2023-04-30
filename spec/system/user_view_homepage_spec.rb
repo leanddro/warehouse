@@ -10,8 +10,10 @@ describe 'Usuário visita tela inicial', type: :feature do
   end
 
   it 'e vê os galpões cadastrado' do
-    Warehouse.create!(name: 'Rio', code: 'SDU', city: 'Rio de Janeiro', area: 60_000)
-    Warehouse.create!(name: 'Maceio', code: 'MCZ', city: 'Maceio', area: 45_000)
+    Warehouse.create!(name: 'Rio', code: 'SDU', city: 'Rio de Janeiro', area: 60_000,
+                    address: 'Av do Porto, 1000', cep:'20000-000', description: 'Galpão do Rio')
+    Warehouse.create!(name: 'Maceio', code: 'MCZ', city: 'Maceio', area: 45_000,
+                    address: 'Av Atlântica, 50', cep:'50000-000', description: 'Perto do Aeroporto')
 
     visit root_path
 

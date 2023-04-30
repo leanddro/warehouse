@@ -1,0 +1,46 @@
+<% if @warehouse.errors.any? %>
+  <ul class="w-full">
+   <% @warehouse.errors.full_messages.each do |msg| %>
+      <li class="p-2 w-full rounded-md text-red-700 bg-red-300 border border-red-400 m-1">
+        <%= msg %>
+      </li>
+    <% end %>
+  </ul>
+
+<% end %>
+
+<%= form_with model: @warehouse, class: 'w-full mt-4 grid gap-4 grid-cols-5' do |f|%>
+  <div class="col-span-5">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'h-10 border mt-1 rounded px-4 w-full bg-gray-50' %>
+  </div>
+  <div class="col-span-5">
+    <%= f.label :description %>
+    <%= f.text_field :description, class: 'h-10 border mt-1 rounded px-4 w-full bg-gray-50' %>
+  </div>
+  <div class="col-span-5">
+    <%= f.label :code %>
+    <%= f.text_field :code, class: 'h-10 border mt-1 rounded px-4 w-full bg-gray-50' %>
+  </div>
+  <div class="col-span-5">
+    <%= f.label :address %>
+    <%= f.text_field :address, class: 'h-10 border mt-1 rounded px-4 w-full bg-gray-50' %>
+  </div>
+
+  <div class="col-span-3">
+    <%= f.label :city %>
+    <%= f.text_field :city, class: 'h-10 border mt-1 rounded px-4 w-full bg-gray-50' %>
+  </div>
+  <div class="col-span-2">
+    <%= f.label :cep %>
+    <%= f.text_field :cep, class: 'h-10 border mt-1 rounded px-4 w-full bg-gray-50' %>
+  </div>
+
+  <div class="col-span-5">
+    <%= f.label :area %>
+    <%= f.number_field :area, class: 'h-10 border mt-1 rounded px-4 w-full bg-gray-50' %>
+  </div>
+  <div class="col-span-5 justify-end">
+    <%= f.submit 'Enviar', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer'%>
+  </div>
+<% end %>
