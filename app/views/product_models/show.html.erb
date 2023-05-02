@@ -1,0 +1,22 @@
+<div class="flex flex-col w-full  bg-white border border-gray-200 rounded-lg shadow">
+  <div class="flex flex-col p-6">
+    <h2 class="text-3xl font-bold"><%= @product_model.name %></h2>
+    <h4 class="text-xl font-bold">SKU: <%= @product_model.sku %></h4>
+    <hr class="h-px my-8 bg-gray-500 border-0">
+    <p class="mb-3 font-normal text-gray-700">
+      Fornecedor: <%= @product_model.supplier.brand_name %>
+    </p>
+    <p class="mb-3 font-normal text-gray-700">
+      Dimensão: <%= "#{@product_model.height}cm x #{@product_model.width}cm x #{@product_model.depth}cm"%>
+    </p>
+    <p class="mb-3 font-normal text-gray-700">
+     Peso: <%= @product_model.weight %>g
+    </p>
+    <div class="flex justify-end p-6">
+      <div class="flex">
+        <%= link_to 'Voltar', product_models_path, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
+      </div>
+    </div>
+
+  </div>
+</div>
