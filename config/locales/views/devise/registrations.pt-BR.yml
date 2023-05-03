@@ -1,0 +1,8 @@
+pt-BR:
+  devise:
+    registrations:
+      new:
+        sign_up: 'Criar conta'
+        log_in: 'Entrar'
+        characters_minimum: "caracteres mínimos"
+        name: 'Nome'

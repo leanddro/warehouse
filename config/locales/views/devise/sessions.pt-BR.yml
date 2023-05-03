@@ -1,0 +1,5 @@
+pt-BR:
+  devise:
+    sessions:
+      new:
+        log_in: 'Entrar'
