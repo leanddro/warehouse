@@ -12,12 +12,27 @@
     <p class="mb-3 font-normal text-gray-700">
       E-mail: <%= @supplier.email %>
     </p>
+    <hr class="h-px my-8 bg-gray-500 border-0">
+    <div class="flex flex-row flex-wrap">
+      <% @supplier.product_models.each do |pm| %>
+        <div class="w-4/12 bg-white border border-gray-200 rounded-lg shadow">
+          <div class="p-5">
+              <h3 class="mb-2 text-xl font-bold"><%= link_to pm.name, pm %></h3>
+              <p class="mb-3 font-normal text-gray-700">
+                Dimensão: <%= "#{pm.height}cm x #{pm.width}cm x #{pm.depth}cm"%>
+              </p>
+              <p class="mb-3 font-normal text-gray-700">
+                Peso: <%= pm.weight %>g
+              </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
     <div class="flex justify-end p-6">
       <div class="flex">
         <%= link_to 'Voltar', suppliers_path, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
         <%= link_to 'Editar', edit_supplier_path(@supplier.id), class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
       </div>
     </div>
-
   </div>
 </div>
