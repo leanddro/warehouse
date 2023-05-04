@@ -1,0 +1,20 @@
+pt-BR:
+  pending: "Pendente"
+  canceled: "Cancelado"
+  delivered: "Entregue"
+  activerecord:
+    models:
+      order:
+        one: 'Pedido'
+        other: 'Pedidos'
+    attributes:
+      order:
+        warehouse: 'Galpão Destino'
+        warehouse_id: 'Galpão Destino'
+        supplier: 'Fornecedor'
+        supplier_id: 'Fornecedor'
+        estimated_delivery_date: 'Data Prevista de Entrega'
+        user_id: "Usuário Responsável"
+        user: "Usuário Responsável"
+        code: "Código"
+        status: "Situação do Pedido"

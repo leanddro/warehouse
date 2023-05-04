@@ -1,0 +1,18 @@
+<section class="flex flex-row flex-wrap w-full">
+  <div>
+    <h2 class="text-3xl">Novo Item para o Pedido<%= @order.code %></h2>
+  </div>
+
+  <%= form_with model: [@order, @order_item], class: 'w-full mt-4 grid gap-4 grid-cols-6' do |f| %>
+    <div class="col-span-6">
+      <%= f.label :product_model_id, 'Produto' %>
+      <%= f.collection_select :product_model_id, @products, :id, :name, { prompt: false }, class: 'h-10 border mt-1 rounded px-4 w-full bg-gray-50' %>
+    </div>
+    <div class="col-span-6">
+      <%= f.label :quantity, 'Quantidade' %>
+      <%= f.number_field :quantity, class: 'h-10 border mt-1 rounded px-4 w-full bg-gray-50' %>
+    </div>
+    <%= f.submit 'Gravar', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
+  <% end %>
+</section>
+
