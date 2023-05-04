@@ -2,7 +2,9 @@ require 'rails_helper'
 
 describe 'Usuário vê fornecedores', type: :feature do
   it 'a partir do menu' do
+    user = User.create!(email: 'leandro@email.com', password: 'password')
 
+    login_as user
     visit root_path
     within 'nav' do
       click_on 'Fornecedores'
@@ -12,6 +14,7 @@ describe 'Usuário vê fornecedores', type: :feature do
   end
 
   it 'com sucesso' do
+    user = User.create!(email: 'leandro@email.com', password: 'password')
     Supplier.create!(corporate_name: 'ACME LTDA', brand_name: 'ACME',
                     registration_number: '1286303100015', full_address: 'Av das Palmas, 100',
                     city: 'Bauru', state: 'SP', email: 'contato@acme.com')
@@ -19,6 +22,7 @@ describe 'Usuário vê fornecedores', type: :feature do
                     registration_number: '5513528500016', full_address: 'Torre da Indústria, 1',
                     city: 'Teresina', state: 'PI', email: 'contato@spark.com')
 
+    login_as user
     visit root_path
     click_on 'Fornecedores'
 
@@ -31,6 +35,9 @@ describe 'Usuário vê fornecedores', type: :feature do
   end
 
   it 'exibe message quando não cadastrado' do
+    user = User.create!(email: 'leandro@email.com', password: 'password')
+
+    login_as user
     visit root_path
     click_on 'Fornecedores'
 
