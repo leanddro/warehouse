@@ -1,0 +1,18 @@
+<section class="w-full">
+  <div class="flex justify-between">
+    <h2 class="text-3xl">Modelos de Produtos</h2>
+  </div>
+  <h1>Resultados da Busca por: <%= @code %></h1>
+  <hr class="h-px my-8 bg-gray-500 border-0">
+  <div class="flex flex-row flex-wrap">
+    <p class="mb-3 text-xl font-normal text-gray-700"><%= @orders.count %>
+      <%= Order.model_name.human(count: @orders.count).downcase %>
+      <%= t(:found, count: @orders.count) %>
+    </p>
+  </div>
+  <% @orders.each do |order| %>
+    <div class="w-4/12 bg-white border border-gray-200 rounded-lg shadow">
+      <%= render order %>
+    </div>
+  <% end %>
+</section>

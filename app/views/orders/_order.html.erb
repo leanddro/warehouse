@@ -1,4 +1,4 @@
-<h4 class="text-xl font-bold"><%= Order.model_name.human %> <%= link_to order.code, order %> </h4>
+<h4 class="text-xl font-bold"><%= Order.model_name.human %> Código: <%= link_to order.code, order %> </h4>
 <hr class="h-px my-8 bg-gray-500 border-0">
 <p class="mb-3 font-normal text-gray-700">
   <%= Order.human_attribute_name(:warehouse_id) %>: <%= order.warehouse.full_description %>

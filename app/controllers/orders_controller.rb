@@ -45,6 +45,14 @@ class OrdersController < ApplicationController
     redirect_to @order
   end
 
+  def search
+    @code = params[:query]
+    @orders = Order.where("code LIKE ?", "%#{@code}%")
+    if @orders.length == 1
+      return redirect_to @orders.first if @orders.first.code == @code
+    end
+  end
+
   private
 
   def set_order_and_check_user
