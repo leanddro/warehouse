@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :orders, only: %i(new create show edit update index) do
     resources :order_items, only: %i(new create)
+    get 'search', on: :collection
     post 'delivered', on: :member
     post 'canceled', on: :member
   end
