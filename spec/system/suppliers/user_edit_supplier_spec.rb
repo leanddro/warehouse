@@ -2,10 +2,12 @@ require 'rails_helper'
 
 describe 'Usuário edita um fornecedor', type: :feature do
   it 'a partir da página de detalhe' do
+    user = User.create!(email: 'leandro@email.com', password: 'password')
     Supplier.create!(corporate_name: 'ACME LTDA', brand_name: 'ACME',
                     registration_number: '1880678200011', full_address: 'Av das Palmas, 100',
                     city: 'Bauru', state: 'SP', email: 'contato@acme.com')
 
+    login_as user
     visit root_path
     click_on 'Fornecedores'
     click_on 'ACME'
@@ -22,10 +24,12 @@ describe 'Usuário edita um fornecedor', type: :feature do
     expect(page).to have_field 'E-mail',	with: 'contato@acme.com'
   end
   it 'com sucesso' do
+    user = User.create!(email: 'leandro@email.com', password: 'password')
     Supplier.create!(corporate_name: 'ACME LTDA', brand_name: 'ACME',
                     registration_number: '1880678200011', full_address: 'Av das Palmas, 100',
                     city: 'Bauru', state: 'SP', email: 'contato@acme.com')
 
+    login_as user
     visit root_path
     click_on 'Fornecedores'
     click_on 'ACME'
@@ -42,10 +46,12 @@ describe 'Usuário edita um fornecedor', type: :feature do
 
   end
   it 'e mantém os campos obrigatórios' do
+    user = User.create!(email: 'leandro@email.com', password: 'password')
     Supplier.create!(corporate_name: 'ACME LTDA', brand_name: 'ACME',
                     registration_number: '1880678200011', full_address: 'Av das Palmas, 100',
                     city: 'Bauru', state: 'SP', email: 'contato@acme.com')
 
+    login_as user
     visit root_path
     click_on 'Fornecedores'
     click_on 'ACME'

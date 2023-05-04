@@ -2,10 +2,12 @@ require 'rails_helper'
 
 describe 'Usuário remove um galpão', type: :feature do
   it 'com sucesso' do
+    user = User.create!(email: 'leandro@email.com', password: 'password')
     Warehouse.create!(name: 'Rio', code: 'SDU', city: 'Rio de Janeiro',
                   area: 60_000, address: 'Av do Porto, 1000', cep: '20000-000',
                   description: 'Galpão do Rio')
 
+    login_as user
     visit root_path
     click_on 'Rio'
     click_on 'Remover'

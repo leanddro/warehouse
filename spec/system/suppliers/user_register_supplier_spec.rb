@@ -2,6 +2,9 @@ require 'rails_helper'
 
 describe 'Usuário registar novo fornecedor', type: :feature do
   it 'com sucesso' do
+    user = User.create!(email: 'leandro@email.com', password: 'password')
+
+    login_as user
     visit root_path
     click_on 'Fornecedores'
     click_on 'Cadastrar novo fornecedor'
@@ -17,6 +20,9 @@ describe 'Usuário registar novo fornecedor', type: :feature do
   end
 
   it 'com sucesso' do
+    user = User.create!(email: 'leandro@email.com', password: 'password')
+
+    login_as user
     visit root_path
     click_on 'Fornecedores'
     click_on 'Cadastrar novo fornecedor'
@@ -38,6 +44,9 @@ describe 'Usuário registar novo fornecedor', type: :feature do
   end
 
   it 'com dados incompletos' do
+    user = User.create!(email: 'leandro@email.com', password: 'password')
+
+    login_as user
     visit root_path
     click_on 'Fornecedores'
     click_on 'Cadastrar novo fornecedor'

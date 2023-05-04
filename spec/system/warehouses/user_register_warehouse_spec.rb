@@ -2,6 +2,9 @@ require 'rails_helper'
 
 describe 'Usuário cadastra um galpão', type: :feature do
   it 'a partir da tela inicial' do
+    user = User.create!(email: 'leandro@email.com', password: 'password')
+
+    login_as user
     visit root_path
     click_on 'Cadastrar Galpão'
 
@@ -15,6 +18,9 @@ describe 'Usuário cadastra um galpão', type: :feature do
   end
 
   it 'com sucesso' do
+    user = User.create!(email: 'leandro@email.com', password: 'password')
+
+    login_as user
     visit root_path
     click_on 'Cadastrar Galpão'
 
@@ -35,6 +41,9 @@ describe 'Usuário cadastra um galpão', type: :feature do
   end
 
   it 'com dados incompletos' do
+    user = User.create!(email: 'leandro@email.com', password: 'password')
+
+    login_as user
     visit root_path
     click_on 'Cadastrar Galpão'
 

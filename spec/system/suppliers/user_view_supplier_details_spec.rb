@@ -2,10 +2,12 @@ require 'rails_helper'
 
 describe 'Usuário vê detalhes do fornecedor', type: :feature do
   it 'a partir da tela inicial' do
+    user = User.create!(email: 'leandro@email.com', password: 'password')
     Supplier.create!(corporate_name: 'ACME LTDA', brand_name: 'ACME',
                     registration_number: '1880678200011', full_address: 'Av das Palmas, 100',
                     city: 'Bauru', state: 'SP', email: 'contato@acme.com')
 
+    login_as user
     visit root_path
     click_on 'Fornecedores'
     click_on 'ACME'
@@ -17,10 +19,12 @@ describe 'Usuário vê detalhes do fornecedor', type: :feature do
   end
 
   it 'e volta para tela inicial' do
+    user = User.create!(email: 'leandro@email.com', password: 'password')
     Supplier.create!(corporate_name: 'ACME LTDA', brand_name: 'ACME',
                     registration_number: '1880678200011', full_address: 'Av das Palmas, 100',
                     city: 'Bauru', state: 'SP', email: 'contato@acme.com')
 
+    login_as user
     visit root_path
     click_on 'Fornecedores'
     click_on 'ACME'
@@ -30,6 +34,7 @@ describe 'Usuário vê detalhes do fornecedor', type: :feature do
   end
 
   it 'e vê a lista de modelos cadastrado' do
+    user = User.create!(email: 'leandro@email.com', password: 'password')
     supplier = Supplier.create!(corporate_name: 'ACME LTDA', brand_name: 'ACME',
                     registration_number: '1880678200011', full_address: 'Av das Palmas, 100',
                     city: 'Bauru', state: 'SP', email: 'contato@acme.com')
@@ -39,12 +44,10 @@ describe 'Usuário vê detalhes do fornecedor', type: :feature do
     ProductModel.create!(name: 'Soundbar 7.1 Surround', weight: 3000, width: 80, height:15, depth: 20,
                         sku: 'SOU71-SAMSU-NOIZ77SD', supplier: supplier)
 
+    login_as user
     visit root_path
     click_on 'Fornecedores'
     click_on 'ACME'
-
-    
-
   end
 
 end

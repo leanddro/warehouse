@@ -4,7 +4,9 @@ describe 'Usuário se autentica', type: :feature do
   it 'com sucesso' do
 
     visit root_path
-    click_on 'Entrar'
+    within 'nav' do
+      click_on 'Entrar'
+    end
     click_on 'Criar conta'
 
     fill_in 'Nome',	with: 'João'

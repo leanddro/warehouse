@@ -2,10 +2,12 @@ require 'rails_helper'
 
 describe 'Usuário edita um galpão', type: :feature do
   it 'a partir da página de detalhe' do
+    user = User.create!(email: 'leandro@email.com', password: 'password')
     Warehouse.create!(name: 'Rio', code: 'SDU', city: 'Rio de Janeiro',
                       area: 60_000, address: 'Av do Porto, 1000', cep: '20000-000',
                       description: 'Galpão do Rio')
 
+    login_as user
     visit root_path
     click_on 'Rio'
     click_on 'Editar'
@@ -21,10 +23,12 @@ describe 'Usuário edita um galpão', type: :feature do
     expect(page).to have_field 'Área', with: 60_000
   end
   it 'com sucesso' do
+    user = User.create!(email: 'leandro@email.com', password: 'password')
     Warehouse.create!(name: 'Rio', code: 'SDU', city: 'Rio de Janeiro',
                       area: 60_000, address: 'Av do Porto, 1000', cep: '20000-000',
                       description: 'Galpão do Rio')
 
+    login_as user
     visit root_path
     click_on 'Rio'
     click_on 'Editar'
@@ -40,10 +44,12 @@ describe 'Usuário edita um galpão', type: :feature do
 
   end
   it 'e mantém os campos obrigatórios' do
+    user = User.create!(email: 'leandro@email.com', password: 'password')
     Warehouse.create!(name: 'Rio', code: 'SDU', city: 'Rio de Janeiro',
                       area: 60_000, address: 'Av do Porto, 1000', cep: '20000-000',
                       description: 'Galpão do Rio')
 
+    login_as user
     visit root_path
     click_on 'Rio'
     click_on 'Editar'
