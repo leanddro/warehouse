@@ -30,6 +30,10 @@ describe 'Usuário informa novo status de pedido', type: :feature do
     expect(page).to have_content 'Situação do Pedido: Entregue'
     expect(page).not_to have_button 'Marcar como ENTREGUE'
     expect(page).not_to have_button 'Marcar como CANCELADO'
+
+    expect(StockProduct.count).to eq 5
+    estoque = StockProduct.where(product_model: product, warehouse: warehouse).count
+    expect(estoque).to eq 5
   end
 
   it 'e pedido foi cancelado' do
@@ -60,6 +64,8 @@ describe 'Usuário informa novo status de pedido', type: :feature do
     expect(page).to have_content 'Situação do Pedido: Cancelado'
     expect(page).not_to have_button 'Marcar como ENTREGUE'
     expect(page).not_to have_button 'Marcar como CANCELADO'
+
+    expect(StockProduct.count).to eq 0
   end
 end
 
