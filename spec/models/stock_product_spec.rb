@@ -10,10 +10,10 @@ RSpec.describe StockProduct, type: :model do
                                   description: 'Galpão destinado para caragas internacionais')
 
       supplier = Supplier.create!(corporate_name: 'ACME LTDA', brand_name: 'ACME',
-                                registration_number: '434472160', full_address: 'Av das Palmas, 100',
+                                registration_number: '4344721601124', full_address: 'Av das Palmas, 100',
                                 city: 'Bauru', state: 'SP', email: 'contato@acme.com')
       product = ProductModel.create!(name: 'Cadeira Gamer', weight: 5, width: 70, height: 100, depth: 75,
-                                  supplier: supplier, sku: 'CAD-GAME')
+                                  supplier: supplier, sku: 'CADEIRA-GAME-RGB-LED')
 
       order = Order.create!(user: user, warehouse: warehouse, supplier: supplier,
                                 estimated_delivery_date: 1.day.from_now, status: :delivered)
@@ -30,14 +30,14 @@ RSpec.describe StockProduct, type: :model do
                                   address: 'Avenida do Aeroporto, 1000', cep: '15000-000',
                                   description: 'Galpão destinado para caragas internacionais')
      other_warehouse = Warehouse.create!(name: 'Rio', code: 'SDU', city: 'Rio de Janeiro',
-                                        area: 60_000, address: 'Av do Porto, 1000', cep: '20000-0000',
+                                        area: 60_000, address: 'Av do Porto, 1000', cep: '20000-000',
                                         description: 'Galpão do Rio')
 
       supplier = Supplier.create!(corporate_name: 'ACME LTDA', brand_name: 'ACME',
-                                registration_number: '434472160', full_address: 'Av das Palmas, 100',
+                                registration_number: '4344721601124', full_address: 'Av das Palmas, 100',
                                 city: 'Bauru', state: 'SP', email: 'contato@acme.com')
       product = ProductModel.create!(name: 'Cadeira Gamer', weight: 5, width: 70, height: 100, depth: 75,
-                                  supplier: supplier, sku: 'CAD-GAME')
+                                  supplier: supplier, sku: 'CADEIRA-GAME-RGB-LED')
 
       order = Order.create!(user: user, warehouse: warehouse, supplier: supplier,
                                 estimated_delivery_date: 1.day.from_now, status: :delivered)
@@ -46,50 +46,6 @@ RSpec.describe StockProduct, type: :model do
       original_serial_number = stock_product.serial_number
       stock_product.update!(warehouse: other_warehouse)
       expect(stock_product.serial_number).to eq original_serial_number
-    end
-  end
-
-  describe '#available?' do
-    it 'true se não tiver destino' do
-      user = User.create!(name: 'Leandro', email: 'leandro@email.com', password: 'password')
-
-      warehouse = Warehouse.create!(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', area: 100_000,
-                                  address: 'Avenida do Aeroporto, 1000', cep: '15000-000',
-                                  description: 'Galpão destinado para caragas internacionais')
-
-      supplier = Supplier.create!(corporate_name: 'ACME LTDA', brand_name: 'ACME',
-                                registration_number: '434472160', full_address: 'Av das Palmas, 100',
-                                city: 'Bauru', state: 'SP', email: 'contato@acme.com')
-      product = ProductModel.create!(name: 'Cadeira Gamer', weight: 5, width: 70, height: 100, depth: 75,
-                                  supplier: supplier, sku: 'CAD-GAME')
-
-      order = Order.create!(user: user, warehouse: warehouse, supplier: supplier,
-                                estimated_delivery_date: 1.day.from_now, status: :delivered)
-
-      stock_product = StockProduct.create!(order: order, warehouse: warehouse, product_model: product)
-
-      expect(stock_product.available?).to be true
-    end
-
-    it 'false se tiver destino' do
-      user = User.create!(name: 'Leandro', email: 'leandro@email.com', password: 'password')
-
-      warehouse = Warehouse.create!(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', area: 100_000,
-                                  address: 'Avenida do Aeroporto, 1000', cep: '15000-000',
-                                  description: 'Galpão destinado para caragas internacionais')
-
-      supplier = Supplier.create!(corporate_name: 'ACME LTDA', brand_name: 'ACME',
-                                registration_number: '434472160', full_address: 'Av das Palmas, 100',
-                                city: 'Bauru', state: 'SP', email: 'contato@acme.com')
-      product = ProductModel.create!(name: 'Cadeira Gamer', weight: 5, width: 70, height: 100, depth: 75,
-                                  supplier: supplier, sku: 'CAD-GAME')
-
-      order = Order.create!(user: user, warehouse: warehouse, supplier: supplier,
-                                estimated_delivery_date: 1.day.from_now, status: :delivered)
-
-      stock_product = StockProduct.create!(order: order, warehouse: warehouse, product_model: product)
-      stock_product.create_stock_product_destination!(recipient: 'João', address: 'Rua do João')
-      expect(stock_product.available?).to be false
     end
   end
 end

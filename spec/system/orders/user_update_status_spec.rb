@@ -13,7 +13,7 @@ describe 'Usuário informa novo status de pedido', type: :feature do
                                 city: 'Bauru', state: 'SP', email: 'contato@acme.com')
 
     product = ProductModel.create!(name: 'Cadeira Gamer', weight: 5, width: 70, height: 100, depth: 75,
-                                  supplier: supplier, sku: 'CAD-GAME-SUPER-RGB10')
+                                  supplier: supplier, sku: 'CADEIRA-GAME-RGB-LED')
 
     order = Order.create!(user: user, warehouse: warehouse, supplier: supplier,
                                 estimated_delivery_date: 1.day.from_now, status: :pending)
@@ -47,7 +47,7 @@ describe 'Usuário informa novo status de pedido', type: :feature do
                                 registration_number: '1880678200011', full_address: 'Av das Palmas, 100',
                                 city: 'Bauru', state: 'SP', email: 'contato@acme.com')
     product = ProductModel.create!(name: 'Cadeira Gamer', weight: 5, width: 70, height: 100, depth: 75,
-                                  supplier: supplier, sku: 'CAD-GAME-SUPER-RGB10')
+                                  supplier: supplier, sku: 'CADEIRA-GAME-RGB-LED')
 
     order = Order.create!(user: user, warehouse: warehouse, supplier: supplier,
                                 estimated_delivery_date: 1.day.from_now, status: :pending)
